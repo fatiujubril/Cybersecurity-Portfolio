@@ -123,6 +123,22 @@ Key investigative decisions during this incident included:
 - Removing malicious mailbox rules before re-enabling user access
 These decisions mirror real SOC workflows where timing and sequencing directly affect containment success.
 
+## MITRE ATT&CK Mapping
+This incident aligns with the following MITRE ATT&CK techniques:
+
+- **T1566.002 – Phishing: Spearphishing Link**  
+  Used to capture valid Microsoft 365 credentials.
+- **T1078 – Valid Accounts**  
+  Attacker authenticated using legitimate user credentials without malware.
+- **T1098.003 – Account Manipulation: Additional Cloud Credentials**  
+  Persistence achieved via mailbox rule manipulation rather than password changes.
+- **T1114.003 – Email Collection: Email Forwarding Rule**  
+  Mailbox rules were used to manipulate message visibility and suppress alerts.
+- **T1534 – Internal Spearphishing**  
+  Compromised mailbox leveraged to send phishing emails to internal and external contacts.
+
+This attack path reflects common identity-based intrusions where attackers exploit cloud-native features instead of deploying malicious payloads.
+
 ## Root Cause Analysis
 **Primary Cause**
 - User credentials compromised via phishing
