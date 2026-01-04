@@ -1,4 +1,4 @@
-***🔐 Microsoft 365 Phishing Incident Response Simulation***
+**🔐 Microsoft 365 Phishing Incident Response Simulation**
 ## Project Overview
 This project simulates a realistic Microsoft 365 account compromise via phishing, focusing on identity abuse, mailbox persistence, and incident response rather than malware or endpoint exploitation.
 
