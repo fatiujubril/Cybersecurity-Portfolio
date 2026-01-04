@@ -2,13 +2,24 @@
 ## Project Overview
 This project simulates a realistic Microsoft 365 account compromise via phishing, focusing on identity abuse, mailbox persistence, and incident response rather than malware or endpoint exploitation.
 
-The objective was to demonstrate how a SOC analyst would:
+## Threat Narrative
+This incident simulates a realistic Microsoft 365 phishing-based account compromise affecting a standard user account.
 
-- Identify a compromised account
-- Investigate attacker activity
-- Assess impact
-- Contain and remediate the incident
-- Extract lessons learned
+The attacker successfully obtained valid credentials via phishing and authenticated to the account from an unfamiliar location. No malware was deployed; instead, the attacker relied on legitimate cloud authentication and Exchange Online features to persist access.
+
+-**Post-compromise activity focused on:**
+  - Establishing mailbox-based persistence
+  - Suppressing security notifications
+  - Leveraging a trusted internal identity to send outbound phishing emails
+
+This scenario reflects common real-world identity attacks where cloud-native abuse replaces traditional endpoint exploitation.
+
+-**The objective was to demonstrate how a SOC analyst would:**
+  - Identify a compromised account
+  - Investigate attacker activity
+  - Assess impact
+  - Contain and remediate the incident
+  - Extract lessons learned
 
 All activity was performed in a **controlled lab tenant** using standard Microsoft 365 tooling.
 
@@ -101,6 +112,16 @@ Containment actions followed correct incident response sequencing:
 - MFA enforcement confirmed post-incident
 - User notification (conceptual)
 This order ensured access was terminated without destroying investigative evidence.
+
+## Analyst Decision Points
+Key investigative decisions during this incident included:
+
+- Prioritizing identity and mailbox telemetry over endpoint malware analysis due to the absence of endpoint alerts
+- Treating inbox rules as a persistence mechanism rather than a user misconfiguration
+- Using message trace to confirm business impact before remediation
+- Revoking sessions prior to password reset to prevent token reuse
+- Removing malicious mailbox rules before re-enabling user access
+These decisions mirror real SOC workflows where timing and sequencing directly affect containment success.
 
 ## Root Cause Analysis
 **Primary Cause**
