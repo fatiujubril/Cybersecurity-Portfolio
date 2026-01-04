@@ -103,68 +103,47 @@ Containment actions followed correct incident response sequencing:
 This order ensured access was terminated without destroying investigative evidence.
 
 ## Root Cause Analysis
-Primary Cause
+**Primary Cause**
+- User credentials compromised via phishing
+- Authentication succeeded using single-factor authentication
 
-User credentials compromised via phishing
+**Contributing Factors**
+- MFA was registered but not enforced
+- Conditional Access policies were not applied to Outlook Web access
+- No alerting on inbox rule creation
 
-Authentication succeeded using single-factor authentication
+## Lessons Learned
+- Credential-only attacks can fully compromise cloud mailboxes
+- Inbox rules remain a low-noise persistence mechanism
+- MFA registration alone does not prevent compromise
+- Identity telemetry is often the earliest and most reliable detection source
+- Even a single phishing email constitutes real business risk
 
-Contributing Factors
+## Recommendations
+- Enforce MFA via Conditional Access for all cloud applications
+- Implement sign-in risk or location-based access controls
+- Alert on inbox rule creation and modification
+- Alert on first outbound phishing email from a user
+- Perform periodic mailbox rule audits
 
-MFA was registered but not enforced
+## Evidence Index
+**Phase**                                                   **Evidence**
+Baseline	                                                  Screenshots 01–05
+Initial Access	                                            Screenshot 06
+Persistence	                                                Screenshot 07
+Impact	                                                    Screenshot 08
+Investigation	                                              Screenshots 09–10
+Containment	                                                Screenshots 11–13
+Hardening	                                                  Screenshot 14
 
-Conditional Access policies were not applied to Outlook Web access
+## Skills Demonstrated
+- Microsoft Entra ID investigation
+- Exchange Online incident response
+- Identity-centric threat analysis
+- SOC workflow and IR sequencing
+- Evidence handling and documentation
+- Realistic attacker modeling
 
-No alerting on inbox rule creation
-
-Lessons Learned
-
-Credential-only attacks can fully compromise cloud mailboxes
-
-Inbox rules remain a low-noise persistence mechanism
-
-MFA registration alone does not prevent compromise
-
-Identity telemetry is often the earliest and most reliable detection source
-
-Even a single phishing email constitutes real business risk
-
-Recommendations
-
-Enforce MFA via Conditional Access for all cloud applications
-
-Implement sign-in risk or location-based access controls
-
-Alert on inbox rule creation and modification
-
-Alert on first outbound phishing email from a user
-
-Perform periodic mailbox rule audits
-
-Evidence Index
-Phase	Evidence
-Baseline	Screenshots 01–05
-Initial Access	Screenshot 06
-Persistence	Screenshot 07
-Impact	Screenshot 08
-Investigation	Screenshots 09–10
-Containment	Screenshots 11–13
-Hardening	Screenshot 14
-Skills Demonstrated
-
-Microsoft Entra ID investigation
-
-Exchange Online incident response
-
-Identity-centric threat analysis
-
-SOC workflow and IR sequencing
-
-Evidence handling and documentation
-
-Realistic attacker modeling
-
-Final Notes
-
+## Final Notes
 This project intentionally avoids exaggerated techniques or unrealistic tooling.
 Every step reflects common, real-world Microsoft 365 phishing incidents encountered by SOC and IR teams.
