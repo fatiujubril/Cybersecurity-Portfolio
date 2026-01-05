@@ -75,6 +75,12 @@ The attacker authenticated to Outlook on the web using stolen credentials from a
   
 This activity was consistent with credential compromise rather than user error.
 
+### Evidence: Anomalous Sign-In Activity
+
+The sign-in log below shows a successful authentication from an unexpected geographic location using single-factor authentication, consistent with credential compromise.
+
+![Anomalous Entra ID sign-in](evidence/06-entra-suspicious-signin.png)
+
 ## Phase 2 – Persistence via Mailbox Rule
 After gaining access, the attacker created a malicious inbox rule designed to suppress security-related emails.
 
@@ -86,6 +92,12 @@ After gaining access, the attacker created a malicious inbox rule designed to su
       
 This technique delays detection by hiding warning emails while maintaining mailbox functionality.
 
+### Evidence: Mailbox Rule Persistence
+
+The attacker established persistence by creating a malicious inbox rule designed to suppress security-related emails.
+
+![Mailbox rule persistence](evidence/07-mailbox-rule-created.png)
+
 ## Phase 3 – Impact (Outbound Phishing)
 The compromised mailbox was used to send a small number of phishing-style emails to controlled recipients.
 
@@ -95,6 +107,12 @@ The compromised mailbox was used to send a small number of phishing-style emails
 - Trust abuse demonstrated without large-scale spamming
   
 This escalated the incident from a simple account anomaly to an active security incident.
+
+### Evidence: Outbound Phishing Activity
+
+Exchange Online message trace confirms outbound phishing emails sent from the compromised mailbox.
+
+![Outbound phishing message trace](evidence/08-outbound-phishing-message-trace.png)
 
 ## Phase 4 – Investigation & Correlation
 During investigation, the following were confirmed:
